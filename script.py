@@ -3,6 +3,7 @@
 import re
 import pprint
 import sys
+import json
 from selenium import webdriver
 
 global driver, dataset
@@ -42,7 +43,7 @@ def get_anchors_for_page(url):
 
 get_page_anchors_for("http://mailchimp.com", recursive=True)
 
-pp = pprint.PrettyPrinter(indent=2)
-pp.pprint(dataset)
+with open('./data.json', 'w') as outfile:
+  json.dump(dataset, outfile)
 
 driver.quit()
